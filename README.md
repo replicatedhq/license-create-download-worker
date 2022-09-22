@@ -40,3 +40,5 @@ curl -X POST \
   --data '{"email": "customeremail@domain.com", "name": "customer name"}' \
   http://localhost:8787  ## this is for dev
 ```
+
+You'll get a single response back that contains the "registryUsername", "registryPassword", "license" you should display the first two and make the third available for download (it is a YAML file).
