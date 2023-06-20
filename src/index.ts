@@ -3,6 +3,7 @@ export interface Env {
 	REPLICATED_TOKEN: string,
   REPLICATED_APPID: string,
   REPLICATED_CHANNELID: string,
+  CORS_ORIGIN: string,
 }
 
 export interface RequestBody {
@@ -89,7 +90,11 @@ export default {
       registryUsername: createCustomerResponse.customer.email,
       registryPassword: createCustomerResponse.customer.installationId,
     };
-
-		return new Response(JSON.stringify(responseBody));
+    const rtnResponse = new Response(JSON.stringify(responseBody));
+    rtnResponse.headers.set("Access-Control-Allow-Origin", env.CORS_ORIGIN);
+    rtnResponse.headers.set("Access-Control-Allow-Methods", "GET,HEAD,POST,PUT,OPTIONS");
+    rtnResponse.headers.set("Access-Control-Max-Age", "86400");
+      
+		return rtnResponse;
 	},
 };
