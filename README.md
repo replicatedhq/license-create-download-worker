@@ -10,6 +10,7 @@ Create three secrets in Cloudflare:
 wrangler secret put REPLICATED_TOKEN
 wrangler secret put REPLICATED_APPID
 wrangler secret put REPLICATED_CHANNELID
+wrangler secret put CORS_ORIGIN
 ```
 
 Create a Replicated RBAC Policy with at least this scope:
