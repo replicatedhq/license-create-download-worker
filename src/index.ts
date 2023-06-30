@@ -29,8 +29,8 @@ export default {
     const replicatedApiEndpoint = `https://api.replicated.com/vendor`;
 
     const requestBody: RequestBody = await request.json();
-
-
+    console.log(request);
+    console.log(env);
     // create the customer
     const body = {
       "app_id": appId,
@@ -69,7 +69,7 @@ export default {
     const createCustomerResponse: CreateCustomerResponse = await resp.json();
 
     // download the license for this customer
-    resp = await fetch(`${replicatedApiEndpoint}/v3/app/customer/${createCustomerResponse.customer.id}/licenses-download`, {
+    resp = await fetch(`${replicatedApiEndpoint}/v3/app/${appId}/customer/${createCustomerResponse.customer.id}/license-download`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
